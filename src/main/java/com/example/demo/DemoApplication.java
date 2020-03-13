@@ -64,9 +64,7 @@ public class DemoApplication {
 			return new ResponseEntity<>(list, HttpStatus.OK);	
 		}
 		System.out.println(list.toString());
-		
 		return new ResponseEntity<>(list, HttpStatus.NOT_FOUND);
-		// return ResponseEntity.status(HttpStatus.OK).body(expense);
 	}
 
 	@PutMapping(value = "/expense/id/{id}")
@@ -80,34 +78,6 @@ public class DemoApplication {
 		expenseRespository.save(expense);
 		return new ResponseEntity<Expense>(expense, HttpStatus.ACCEPTED);
 	}
-
-
-// 	public Optional<Customer> updateCustomer(Long id, Customer customer) {
-// 		Optional<Customer> customerOptional = customerRepository.findById(id);
-// 		if(!customerOptional.isPresent()) {
-// 				return customerOptional;
-// 		}
-// 		customer.setId(id);
-// 		return Optional.of(customerRepository.save(customer));
-// }
-
-
-	// method get
-	// @RequestMapping("/expense/id")
-	// public ResponseEntity getExpenseById(@RequestParam(required = false) String id) {
-	// 	Long mid = Long.parseLong(id);
-	// 	Optional<Expense> eOptional = expenseRespository.findById(mid);
-	// 	Expense expense;
-	// 	try {
-	// 		expense = eOptional.get();
-	// 		return ResponseEntity.status(HttpStatus.OK).body(expense);
-	// 	} catch (Exception e) {
-	// 		HttpStatus status = HttpStatus.NOT_FOUND;
-	// 		ErrorResponse errorResponse = new ErrorResponse(status, mid);
-	// 		// System.out.println(HttpStatus.NOT_FOUND.compareTo(1));
-	// 		return ResponseEntity.status(status).body(errorResponse);
-	// 	}
-	// }
 
 	// method post
 	@PostMapping(
@@ -128,23 +98,4 @@ public class DemoApplication {
 
 		return expenseRespository.getAll();
 	}
-
-	// @Bean
-	// public CommandLineRunner demo(ExpenseRespository respository) {
-	// return (args) -> {
-	// respository.save(new Expense("test0", 10020));
-	// respository.save(new Expense("test1", 10400));
-	// respository.save(new Expense("test2", 10001));
-	// respository.save(new Expense("test3", 10400));
-	// respository.save(new Expense("test4", 10050));
-	// respository.save(new Expense("test5", 11000));
-
-	// log.info("Expense found with findAll()");
-	// log.info("----------------------------");
-	// for (Expense expense: respository.findAll()) {
-	// log.info(expense.toString());
-	// }
-	// log.info("");
-	// };
-	// }
 }
